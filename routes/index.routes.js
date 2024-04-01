@@ -7,4 +7,7 @@ router.get("/", (req, res, next) => {
 const subjectRoutes = require("./subject.routes");
 router.use("/subject", subjectRoutes);
 
+const teacherRoutes = require("./teacher.routes");
+router.use("/teacher", teacherRoutes);
+
 module.exports = router;
