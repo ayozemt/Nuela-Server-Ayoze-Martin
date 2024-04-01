@@ -61,6 +61,7 @@ module.exports.edit = async (req, res, next) => {
     if (!updatedSubject) {
       return res.status(404).json({ message: "Subject not found" });
     }
+    return res.status(200).json({ message: "Subject updated successfully" });
   } catch (error) {
     return res.status(500).json({ message: "Internal server error" });
   }
