@@ -2,7 +2,7 @@ const router = require("express").Router();
 const subjectController = require("../controllers/subject.controller");
 
 // CREATE
-router.post("/", subjectController.create);
+router.post("/teacher/:teacherId", subjectController.create);
 
 // READ all subjects
 router.get("/", subjectController.list);
