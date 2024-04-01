@@ -24,7 +24,7 @@ const subjectSchema = new Schema(
       ],
       required: [true, "Curso necesario"],
     },
-    class: {
+    group: {
       type: String,
       enum: ["A", "B", "C", "D"],
       required: [true, "El grupo es necesario"],
@@ -34,20 +34,19 @@ const subjectSchema = new Schema(
       required: [true, "El número de horas es necesario"],
       min: 0,
     },
-    group: {
+    espacio: {
       type: String,
     },
-    // Para esta prueba técnica no se va a utilizar, pero en la vida real supongo que las asignaturas irían referenciadas a un profesor
-    // teacher: {
-    //   type: Schema.Types.ObjectId,
-    //   ref: "Teacher",
-    // },
+    teacher: {
+      type: Schema.Types.ObjectId,
+      ref: "Teacher",
+    },
   },
   { timestamps: true }
 );
 
 subjectSchema.pre("save", function (next) {
-  this.group = `${this.grade} - Grupo ${this.class}`;
+  this.espacio = `${this.grade} - Grupo ${this.group}`;
   next();
 });
 
