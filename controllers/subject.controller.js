@@ -71,9 +71,9 @@ module.exports.detail = async (req, res, next) => {
 module.exports.edit = async (req, res, next) => {
   try {
     const { subjectId } = req.params;
-    const { name, type, grade, group, hours } = req.body;
+    const { name, type, grade, group, hours, espacio } = req.body;
 
-    if (!name || !type || !grade || !group || !hours) {
+    if (!name || !type || !grade || !group || !hours || !espacio) {
       return res
         .status(400)
         .json({ message: "Bad request: All fields are mandatory" });
@@ -81,7 +81,7 @@ module.exports.edit = async (req, res, next) => {
 
     const updatedSubject = await Subject.findByIdAndUpdate(
       subjectId,
-      { name, type, grade, group, hours },
+      { name, type, grade, group, hours, espacio },
       { new: true }
     );
 
